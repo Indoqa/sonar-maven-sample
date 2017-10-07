@@ -13,7 +13,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.compiler.version>1.8</project.build.compiler.version>
     <sonar.language>java</sonar.language>
-    <sonar.jacoco.reportPaths>${project.build.directory}/jacoco-all.exec</sonar.jacoco.reportPaths>
+    <sonar.jacoco.reportPaths>
+      ./target/jacoco-all.exec,
+      ../target/jacoco-all.exec,
+      ../../target/jacoco-all.exec,
+    </sonar.jacoco.reportPaths>
   </properties>
 
   <modules>
@@ -86,22 +90,19 @@
             <artifactId>jacoco-maven-plugin</artifactId>
             <executions>
               <execution>
-                <id>default-prepare-agent</id>
+                <id>agent-for-ut</id>
                 <goals>
                   <goal>prepare-agent</goal>
                 </goals>
               </execution>
-              <!--
               <execution>
-                <id>default-report</id>
-                <phase>prepare-package</phase>
+                <id>agent-for-it</id>
                 <goals>
-                  <goal>report</goal>
+                  <goal>prepare-agent-integration</goal>
                 </goals>
               </execution>
-              -->
               <execution>
-                <id>merge-ut</id>
+                <id>merge-ut-it</id>
                 <phase>verify</phase>
                 <goals>
                   <goal>merge</goal>
@@ -114,6 +115,8 @@
                       <includes>
                         <include>**/target/jacoco.exec</include>
                         <include>**/**/target/jacoco.exec</include>
+                        <include>**/target/jacoco-it.exec</include>
+                        <include>**/**/target/jacoco-it.exec</include>
                       </includes>
                     </fileSet>
                   </fileSets> -->
