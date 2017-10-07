@@ -13,7 +13,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.compiler.version>1.8</project.build.compiler.version>
     <sonar.language>java</sonar.language>
-    <sonar.jacoco.reportPaths>./target/jacoco-all.exec</sonar.jacoco.reportPaths>
+    <sonar.jacoco.reportPaths>${project.build.directory}/jacoco-all.exec</sonar.jacoco.reportPaths>
   </properties>
 
   <modules>
