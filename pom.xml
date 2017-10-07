@@ -95,14 +95,16 @@
                   <goal>prepare-agent</goal>
                 </goals>
               </execution>
+              <!--
               <execution>
                 <id>agent-for-it</id>
                 <goals>
                   <goal>prepare-agent-integration</goal>
                 </goals>
               </execution>
+              -->
               <execution>
-                <id>merge-ut-it</id>
+                <id>merge-ut</id>
                 <phase>verify</phase>
                 <goals>
                   <goal>merge</goal>
@@ -115,8 +117,10 @@
                       <includes>
                         <include>**/target/jacoco.exec</include>
                         <include>**/**/target/jacoco.exec</include>
+                        <!--
                         <include>**/target/jacoco-it.exec</include>
                         <include>**/**/target/jacoco-it.exec</include>
+                        -->
                       </includes>
                     </fileSet>
                   </fileSets> -->
