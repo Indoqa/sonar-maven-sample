@@ -13,7 +13,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.compiler.version>1.8</project.build.compiler.version>
     <sonar.language>java</sonar.language>
-    <sonar.jacoco.reportPaths>./target/jacoco.exec</sonar.jacoco.reportPaths>
+    <sonar.jacoco.reportPaths>./target/jacoco-all.exec</sonar.jacoco.reportPaths>
   </properties>
 
   <modules>
@@ -91,12 +91,35 @@
                   <goal>prepare-agent</goal>
                 </goals>
               </execution>
+              <!--
               <execution>
                 <id>default-report</id>
                 <phase>prepare-package</phase>
                 <goals>
                   <goal>report</goal>
                 </goals>
+              </execution>
+              -->
+              <execution>
+                <id>merge-ut</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>merge</goal>
+                </goals>
+                <inherited>false</inherited>
+                <configuration>
+                  <fileSets>
+                    <fileSet>
+                      <directory>${basedir}/</directory>
+                      <includes>
+                        <include>**/target/jacoco.exec</include>
+                        <include>**/**/target/jacoco.exec</include>
+                      </includes>
+                    </fileSet>
+                  </fileSets> -->
+                  <!-- File containing the merged data -->
+                  <destFile>${project.build.directory}/jacoco-all.exec</destFile>
+                </configuration>
               </execution>
             </executions>
           </plugin>
